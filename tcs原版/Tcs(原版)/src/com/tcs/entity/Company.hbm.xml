@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tcs.entity.Company" table="company">
+		<id name="companyId" type="java.lang.Integer">
+			<column name="companyId" />
+			<generator class="native" />
+		</id>
+		<property name="companyName" type="java.lang.String">
+			<column name="companyName" not-null="true" />
+		</property>
+		<property name="companyAccount" type="java.lang.String">
+			<column name="companyAccount" length="15" not-null="true" />
+		</property>
+		<property name="companyPwd" type="java.lang.String">
+			<column name="companyPwd" length="15" not-null="true" />
+		</property>
+		<property name="companyAddress" type="java.lang.String">
+			<column name="companyAddress" not-null="true" />
+		</property>
+		<property name="companyAddress2" type="java.lang.String">
+			<column name="companyAddress2" not-null="true" />
+		</property>
+		<property name="companyServiceScope" type="java.lang.String">
+			<column name="companyServiceScope" not-null="true" />
+		</property>
+		<property name="companyPhone" type="java.lang.String">
+			<column name="companyPhone" length="11" not-null="true" />
+		</property>
+		<property name="companyEmail" type="java.lang.String">
+			<column name="companyEmail" />
+		</property>
+		<property name="companyLicenseImg" type="java.lang.String">
+			<column name="companyLicenseImg" />
+		</property>
+		<property name="companyImg" type="java.lang.String">
+			<column name="companyImg" />
+		</property>
+		<property name="companySummary" type="java.lang.String">
+			<column name="companySummary" />
+		</property>
+		<property name="companyStage" type="java.lang.Integer">
+			<column name="companyStage" not-null="true" />
+		</property>
+		<property name="companyGrade" type="float">
+			<column name="companyGrade" />
+		</property>
+
+		<many-to-one name="company_facilitatorType" class="com.tcs.entity.FacilitatorType"
+			column="company_facilitatorTypeId" lazy="false"></many-to-one>
+		<set name="comment" table="comment" inverse="true" cascade="save-update">
+			<key>
+				<column name="comment_companyId" />
+			</key>
+			<one-to-many class="com.tcs.entity.Comment" />
+		</set>
+		<set name="service" table="service" inverse="true" cascade="save-update">
+			<key>
+				<column name="service_companyId" />
+			</key>
+			<one-to-many class="com.tcs.entity.Service" />
+		</set>
+		<set name="order" table="order" inverse="true" cascade="save-update">
+			<key>
+				<column name="order_companyId" />
+			</key>
+			<one-to-many class="com.tcs.entity.Order" />
+		</set>
+		<set name="messageTo" table="message" inverse="true" cascade="save-update">
+			<key>
+				<column name="messagetocompanyId" />
+			</key>
+			<one-to-many class="com.tcs.entity.Message" />
+		</set>
+		<set name="messageFrom" table="message" inverse="true" cascade="save-update">
+			<key>
+				<column name="messagefromcompanyId" />
+			</key>
+			<one-to-many class="com.tcs.entity.Message" />
+		</set>
+	</class>
+</hibernate-mapping>

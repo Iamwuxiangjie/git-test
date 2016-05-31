@@ -1,0 +1,25 @@
+*{
+	font-family: "Microsoft YaHei","sans-serif";
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #56A4E9;
+}
+
+#admin_updateFacilitatorType{
+	padding: 50px 20px;
+	font-size: 14px;
+}
+
+#admin_updateFacilitatorType .btn{
+	width: 150px;
+	cursor: pointer;
+}
+
+#admin_updateFacilitatorType .txt,#admin_updateFacilitatorType .txtDes{
+	color: #000;
+}
+
+#admin_updateFacilitatorType .txtDes{
+	width: 929px;
+}

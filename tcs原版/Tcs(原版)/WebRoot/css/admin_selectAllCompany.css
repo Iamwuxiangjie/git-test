@@ -1,0 +1,80 @@
+*{
+	font-family: "Microsoft YaHei","sans-serif";
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #56A4E9;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	color: #317EAC;
+}
+
+#admin_selectAllCompany{
+	padding: 20px 20px;
+	font-size: 14px;
+}
+
+#admin_selectAllCompany p{
+	font-size: 18px;
+}
+
+#admin_selectAllCompany p a{
+	color: #317EAC;
+}
+
+#admin_selectAllCompany p a:hover{
+	color: #105E8C;
+}
+
+#admin_selectAllCompany .dataTable{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	line-height: 40px;
+	margin-top: 10px;
+}
+
+#admin_selectAllCompany .dataTable tr td{
+	text-align: center;
+}
+
+#admin_selectAllCompany .dataTable,#admin_selectAllCompany .dataTable th,#admin_selectAllCompany .dataTable td{
+	border: 1px solid #DDD;
+}
+
+#admin_selectAllCompany .dataTable tr:nth-child(2n){
+	background-color: #F9F9F9;
+}
+
+#admin_selectAllCompany .txt{
+	color: #000;
+}
+
+#admin_selectAllCompany .search{
+	width: 100px;
+	cursor: pointer;
+}
+
+#page{
+	text-align: center;
+	margin-top: 10px;
+	letter-spacing: 5px;
+	color: #BBB;
+}
+
+#page a{
+	color: #56A4E9;
+}
+
+#page a:hover{
+	color: #317EAC;
+}
+
+#admin_selectAllCompany p{
+	color: #C81522;
+}
