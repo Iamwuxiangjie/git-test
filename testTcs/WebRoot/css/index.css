@@ -1,0 +1,274 @@
+* {
+	font-family: "Microsoft YaHei";
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-size: 14px;
+}
+
+html,body {
+	position: relative;
+	height: 100%;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+#head {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	background: #5ABEF0;
+	box-shadow: 0 2px 3px #AAA;
+	z-index: 9999;
+	min-width: 1000px;
+}
+
+.top {
+	margin: 0 200px;
+	min-width: 1000px;
+}
+
+.logo{
+	float: left;
+	margin-top: 10px;
+}
+
+.logo a{
+	text-decoration: none;
+}
+
+.logo img{
+	float: left;
+}
+
+.logo a span{
+	display: block;
+	float: left;
+	font-size: 20px;
+	padding: 12px 5px;
+	color: #EEE;
+	position: relative;
+}
+
+.headTag {
+	float: right;
+	margin-right: 30px;
+}
+
+.headTag a {
+	color: #EEE;
+	text-decoration: none;
+}
+
+.headTag a:hover {
+	color: #0F0;
+}
+
+.headTag ul li {
+	text-align: center;
+	min-width: 70px;
+	padding: 0 10px;
+	float: left;
+	line-height: 70px;
+	margin: 0 20px;
+}
+
+.headTag span {
+	color: #FF6D00;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	margin-top: 70px;
+}
+
+.swiper-slide {
+	min-width: 1000px;
+	color: #20A4E2;
+	position: relative;
+	text-align: center;
+	font-size: 18px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.floorone{
+	background: url('../images/floor1bg.jpg') right bottom no-repeat;
+	background-size: cover;	
+}
+
+.floorone h2{
+	font-size: 60px;
+	letter-spacing: 5px;
+	padding-left: 230px;
+}
+
+.floorone .topP{
+	font-size: 24px;
+	padding-left: 230px;
+}
+
+.floorone .topP:last-child{
+	padding-bottom: 300px; 
+}
+
+.floortwo{
+	background: url('../images/floor2bg.jpg') right bottom no-repeat;
+	background-size: cover;
+}
+
+.topP {
+	font-size: 31px;
+}
+
+.index_ul{
+	list-style: none;
+}
+
+.index_ul li{
+	position: relative;
+	float: left;
+	width: 186px;
+	height: 326px;
+	margin-left: 20px;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.index_ul li:first-child{
+	margin-left: 0px;
+}
+
+.icon-title1,.icon-title2,.icon-title3{
+	display: block;
+	position: absolute;
+	top: -30px;
+	left: 50px;
+	width: 80px;
+	height: 78px;
+	overflow: hidden;
+}
+
+.icon-title1{
+	background: url('../images/icon_title.png') no-repeat;
+	background-size: 160px 226px;
+}
+
+.icon-title2{
+	background: url('../images/icon_title.png') -78px 0px no-repeat;
+	background-size: 160px 226px;
+}
+
+.icon-title3{
+	height: 72px;
+	top: -25px;
+	background: url('../images/icon_title.png') 0px -77px no-repeat;
+	background-size: 160px 226px;
+}
+
+.dl-txt{
+	width: 130px;
+	height: 246px;
+	overflow: hidden;
+	padding: 80px 28px 0;
+}
+
+.dl-txt dt{
+	font-size: 18px;
+	height: 52px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.dl-txt dd{
+	font-size: 16px;
+	padding-top: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #666;
+}
+
+.floorthree{
+	background: url('../images/floor3bg.png') center no-repeat;
+	background-size: cover; 
+}
+
+.contxt-title{
+	width: 350px;
+	position: relative;
+	top: -300px;
+	left: 250px;
+}
+
+.contxt-title h2{
+	font-size: 40px;
+}
+
+.contxt-con{
+	width: 700px;
+	position: relative;
+	bottom: -220px;
+	left: 380px;
+	text-align: left;
+	line-height: 30px;
+}
+
+.contxt-con p{
+	font-size: 18px;
+	
+}
+
+.floorfour{
+	background:  url('../images/floor4bg.jpg') center no-repeat;
+	background-size: cover; 
+}
+
+.floorfour .center{
+	width: 400px;
+	margin-bottom: 320px;
+}
+
+.floorfour .titleH{
+	font-size: 24px;
+	color: #808080;
+	margin: 0 auto 10px;
+}
+
+.floorfour .text{
+	font-size: 20px;
+	text-align: left;
+	padding: 5px 0;
+	margin-bottom: 20px;
+}
+
+.floorfour .cp-text{
+	color: #808080;
+}
+
+.floorfour .cp-text a{
+	color: #808080;
+	text-decoration: none;
+}
+
+.floorfour .cp-text a:hover{
+	color: #FF0843;
+}
+
+.amore{
+	color: #808080;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tcs.entity.Validation" table="validation">
+		<id name="validationId" type="java.lang.Integer">
+			<column name="validationId" />
+			<generator class="native" />
+		</id>
+		<property name="validationNum" type="java.lang.String">
+			<column name="validationNum" length="10" not-null="true" />
+		</property>
+		<property name="validationAddress" type="java.lang.String">
+			<column name="validationAddress" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

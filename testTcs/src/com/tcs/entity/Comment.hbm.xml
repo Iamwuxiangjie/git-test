@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.tcs.entity.Comment" table="comment">
+        <id name="commentId" type="java.lang.Integer">
+            <column name="commentId" />
+            <generator class="native" />
+        </id>
+        <property name="commentCont" type="java.lang.String">
+            <column name="commentCont" length="200"/>
+        </property>
+        <property name="commentTime" type="java.lang.String">
+            <column name="commentTime" not-null="true"/>
+        </property>
+        <property name="commentGrade" type="java.lang.Integer">
+            <column name="commentGrade" not-null="true"/>
+        </property>
+        <many-to-one name="comment_user" class="com.tcs.entity.User" column="comment_userId" lazy="false"></many-to-one>
+        <many-to-one name="comment_company" class="com.tcs.entity.Company" column="comment_companyId" lazy="false"></many-to-one>
+        <many-to-one name="comment_service" class="com.tcs.entity.Service" column="comment_serviceId" lazy="false"></many-to-one>
+    </class>
+</hibernate-mapping>

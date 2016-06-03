@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.tcs.interceptot.LoginInterceptot"></interceptor>
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">
+						image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png,
+						image/pjpeg
+					</param>
+					<param name="maximumSize">1024000</param>
+					<param name=""></param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myInterceptorStack" />
+		<global-results>
+			<result name="toindex">/web/index.jsp</result>
+		</global-results>
+	</package>
+	<!-- 登录处理 -->
+	<package name="web" namespace="/web" extends="default">
+		<action name="*_*" class="com.tcs.action.{1}Action" method="{2}">
+			<!-- 跳转到公司登陆 -->
+			<result name="company_login" type="chain">
+				<param name="actionName">Company_login</param>
+				<param name="namespace">/company</param>
+			</result>
+			<!-- 跳转到用户登录 -->
+			<result name="user_login" type="chain">
+				<param name="actionName">User_login</param>
+				<param name="namespace">/user</param>
+			</result>
+			<!-- 跳转到公司注册 -->
+			<result name="company_register">/company/company_register.jsp</result>
+			<!-- 跳转到用户注册 -->
+			<result name="user_register">/user/user_register.jsp</result>
+			<result name="showServiceById">/web/showServiceById.jsp</result>
+
+			<result name="userforget_success">/web/email_back.jsp</result>
+			<result name="companyforget_success">/web/email_back.jsp</result>
+			<result name="forget_failure">/web/forgetpwd.jsp</result>
+
+			<result name="toemailback_success">/web/validation.jsp</result>
+			<result name="toemailback_failure">/web/email_back.jsp</result>
+
+			<result name="repwd_success">/web/repwd_success.jsp</result>
+			<result name="repwd_failure">/web/validation.jsp</result>
+
+		</action>
+	</package>
+	<package name="admin" namespace="/admin" extends="default">
+		<action name="*_*" class="com.tcs.action.{1}Action" method="{2}">
+			<result name="input">/admin/uploadError.jsp</result>
+			<result name="login_success" type="chain">Message_getAdminUnreadMessagecount
+			</result>
+			<result name="getunreadmessagecount_success" type="redirect">/admin/admin_login_success.jsp</result>
+			<result name="login_failure">/admin/admin_login.jsp</result>
+			<result name="logout_success" type="redirect">/admin/admin_login.jsp</result>
+
+			<result name="upload_success">/admin/admin_upload.jsp</result>
+			<result name="upload_failure">/admin/admin_upload.jsp</result>
+
+			<result name="refresh_success" type="chain">Message_getAdminUnreadMessagecount
+			</result>
+			<result name="refresh_failure">/admin/admin_login_success.jsp</result>
+
+			<result name="selectmessage_success">/admin/admin_mymessage.jsp</result>
+			<result name="readmessage_success" type="chain">Message_selectAdminAllMessage
+			</result>
+			<result name="readmessage_failure" type="chain">Message_selectAdminAllMessage
+			</result>
+			<result name="deletemessage_success" type="chain">Message_selectAdminAllMessage
+			</result>
+			<result name="deletemessage_failure" type="chain">Message_selectAdminAllMessage
+			</result>
+			<result name="getmessagetopeople_success">/admin/admin_sendMessage.jsp
+			</result>
+			<result name="sendmessagetopeople_success">/admin/sendMessageSuccess.jsp
+			</result>
+			<result name="sendmessagetopeople_failure">/admin/admin_sendMessage.jsp
+			</result>
+
+			<result name="selectallcompany_success">/admin/admin_selectAllCompany.jsp
+			</result>
+			<result name="getcompany_success" type="chain">Service_selectComAllService
+			</result>
+			<result name="selectcomallservice_success">/admin/admin_company.jsp
+			</result>
+			<result name="selectcomallservice_failure">/admin/admin_company.jsp
+			</result>
+			<result name="getcompany_failure">/admin/admin_selectAllCompany.jsp
+			</result>
+
+			<result name="companyapproved_success">/admin/operationSuccess.jsp
+			</result>
+			<result name="companyapproved_failure">/admin/admin_company.jsp
+			</result>
+
+			<result name="updown_success">/admin/operationSuccess.jsp
+			</result>
+			<result name="updown_failure">/admin/uploadError.jsp
+			</result>
+
+			<result name="selectcomallorder_success">/admin/admin_company.jsp
+			</result>
+			<result name="selectcomallorder_failure">/admin/admin_company.jsp
+			</result>
+
+			<result name="selectallorder_success">/admin/admin_allOrder.jsp
+			</result>
+
+			<result name="getserviceprice_success">/admin/admin_servicePrice.jsp
+			</result>
+
+			<result name="gettop_success">/admin/admin_serviceTop.jsp
+			</result>
+			<result name="gettop_failure">/admin/admin_servicePrice.jsp
+			</result>
+
+			<result name="repwd_success">/admin/admin_repwdSuccess.jsp
+			</result>
+			<result name="repwd_failure">/admin/admin_repwd.jsp
+			</result>
+
+			<result name="gettpye_success">/admin/admin_addFacilitatorType.jsp
+			</result>
+
+			<result name="gettypetoupdate_success">/admin/admin_updateFacilitatorType.jsp
+			</result>
+
+			<result name="addfacilitatortype_success" type="chain">FacilitatorType_getType
+			</result>
+			<result name="addfacilitatortype_failure">/admin/admin_addFacilitatorType.jsp
+			</result>
+
+			<result name="updatefacilitatortype_success" type="chain">FacilitatorType_getType
+			</result>
+			<result name="updatefacilitatortype_failure">/admin/admin_updateFacilitatorType.jsp
+			</result>
+
+			<result name="getservicetpye_success">/admin/admin_addServiceType.jsp
+			</result>
+
+			<result name="getservicetypetoupdate_success">/admin/admin_updateServiceType.jsp
+			</result>
+
+			<result name="updateservicetype_success" type="chain">ServiceType_getServiceType
+			</result>
+			<result name="updateservicetype_failure">/admin/admin_updateServiceType.jsp
+			</result>
+
+			<result name="addservicetype_success" type="chain">ServiceType_getServiceType
+			</result>
+			<result name="addservicetype_failure">/admin/admin_addServiceType.jsp
+			</result>
+
+			<result name="getpriveunit_success">/admin/admin_addPriveunit.jsp
+			</result>
+
+			<result name="getpriveunittoupdate_success">/admin/admin_updatePriveunit.jsp
+			</result>
+
+			<result name="updatepriveunittype_success" type="chain">Priveunit_getPriveunit
+			</result>
+			<result name="updatepriveunittype_failure">/admin/admin_updatePriveunit.jsp
+			</result>
+
+			<result name="addpriveunittype_success" type="chain">Priveunit_getPriveunit
+			</result>
+			<result name="addpriveunittype_failure">/admin/admin_addPriveunit.jsp
+			</result>
+			
+			<result name="deletefacilitatortype_success" type="chain">FacilitatorType_getType
+			</result>
+			<result name="deletefacilitatortype_failure">/admin/admin_addFacilitatorType.jsp
+			</result>
+			
+			<result name="deletepriveunittype_success" type="chain">Priveunit_getPriveunit
+			</result>
+			<result name="deletepriveunittype_failure">/admin/admin_addPriveunit.jsp
+			</result>
+			
+			<result name="deleteservicetype_success" type="chain">ServiceType_getServiceType
+			</result>
+			<result name="deleteservicetype_failure">/admin/admin_addServiceType.jsp
+			</result>
+			
+		</action>
+	</package>
+
+
+	<!-- 用户业务处理 -->
+	<package name="user" namespace="/user" extends="default">
+		<action name="*_*" class="com.tcs.action.{1}Action" method="{2}">
+			<!-- 登录方面 -->
+			<result name="input">/user/uploadError.jsp</result>
+			<result name="login_success" type="chain">ServiceType_getServiceType
+			</result>
+			<result name="getservicetpye_success" type="chain">ServiceType_getUserLikeServiceTypeId
+			</result>
+			<result name="getuserlikeservicetypeid_success" type="chain">Message_getUserUnreadMessagecount
+			</result>
+			<result name="getunreadmessagecount_success">/user/user_login_success.jsp</result>
+			<result name="logout_success" type="redirect">/web/login.jsp</result>
+			<result name="login_failure">/web/login.jsp</result>
+			<!-- 注册 -->
+			<result name="register_success" type="chain">ServiceType_getServiceType
+			</result>
+			<result name="register_failure">/user/user_register.jsp</result>
+			<!-- 邮箱验证 -->
+			<result name="email_success" type="chain">User_sendEmailToBind
+			</result>
+			<result name="email_failure">/user/user_email.jsp</result>
+
+			<result name="sendemailtobind_success">/user/user_bindEmail.jsp</result>
+			<result name="sendemailtobind_failure">/user/user_email.jsp</result>
+
+			<result name="bindemail_success">/user/user_bindEmail_success.jsp</result>
+			<result name="bindemail_failure">/user/user_bindEmail.jsp</result>
+
+			<!-- 实名认证 -->
+			<result name="realName_success">/user/user_login_success.jsp</result>
+			<result name="realName_failure">/user/user_realName.jsp</result>
+			<!-- 上传图片 -->
+			<result name="upload_success">/user/user_update.jsp</result>
+			<result name="upload_failure">/user/uploadError.jsp</result>
+			<!-- 页面刷新兼返回主页 -->
+			<result name="refresh_success" type="chain">ServiceType_getUserLikeServiceTypeId
+			</result>
+			<result name="refresh_failure">/user/user_login_success.jsp</result>
+			<!-- 更新信息 -->
+			<result name="update_success" type="chain">ServiceType_getUserLikeServiceTypeId
+			</result>
+			<result name="update_failure">/user/user_update.jsp</result>
+			<!-- 评价 -->
+			<result name="commentok_success" type="chain">Order_selectUserAllOrder
+			</result>
+			<result name="commentok_failure">/user/user_orderList.jsp</result>
+			<!-- 查询所有评价 -->
+			<result name="selectuserallcomment_success">/user/user_commentList.jsp</result>
+			<result name="selectuserallcomment_failure">/user/user_login_success.jsp</result>
+			<!-- 数据转移 -->
+			<result name="temp_success">/user/user_comment.jsp</result>
+			<!-- 信息 -->
+			<result name="selectmessage_success">/user/user_mymessage.jsp</result>
+			<result name="readmessage_success" type="chain">Message_selectUserAllMessage
+			</result>
+			<result name="readmessage_failure" type="chain">Message_selectUserAllMessage
+			</result>
+			<result name="deletemessage_success" type="chain">Message_selectUserAllMessage
+			</result>
+			<result name="deletemessage_failure" type="chain">Message_selectUserAllMessage
+			</result>
+			<!-- 信息发送 -->
+			<result name="getmessagetopeople_success">/user/user_sendMessage.jsp
+			</result>
+			<result name="sendmessagetopeople_success">/user/sendMessageSuccess.jsp
+			</result>
+			<result name="sendmessagetopeople_failure">/user/user_sendMessage.jsp
+			</result>
+			<result name="ordergetmessagetocom_success">/user/user_sendMessage.jsp
+			</result>
+			<result name="serviceslist">/web/showAllServices.jsp</result>
+			<!-- 订单 -->
+			<result name="addOrder_success" type="chain">Order_selectUserAllOrder
+			</result>
+			<result name="pay_success">/user/topay.jsp</result>
+			
+			<result name="orderpay_success" type="chain">Order_selectUserAllOrder</result>
+			<result name="orderpay_failure">/user/topay.jsp</result>
+			
+			<result name="addOrder_failure">/web/showAllServices.jsp</result>
+			<result name="selectuserallorder_success">/user/user_orderList.jsp</result>
+			<result name="selectuserallorder_failure">/user/user_login_success.jsp</result>
+			<result name="orderuserok_success" type="chain">Order_selectUserAllOrder
+			</result>
+			<result name="orderuserok_failure">/user/user_order.jsp</result>
+
+			<result name="repwd_success">/user/user_repwdSuccess.jsp</result>
+			<result name="repwd_failure">/user/user_repwd.jsp</result>
+
+			<result name="getalladmin_success">/user/user_sendMessageToAdmin.jsp
+			</result>
+
+			<result name="sendmessagetoadmin_success">/user/sendMessageSuccess.jsp
+			</result>
+			<result name="sendmessagetoadmin_failure">/user/user_sendMessageToAdmin.jsp
+			</result>
+
+			<result name="deleteOrder_success" type="chain">Order_selectUserAllOrder
+			</result>
+			<result name="deleteOrder_failure">/user/user_orderList.jsp
+			</result>
+
+
+		</action>
+	</package>
+	<!-- 公司业务处理 -->
+	<package name="company" namespace="/company" extends="default">
+		<action name="*_*" class="com.tcs.action.{1}Action" method="{2}">
+			<result name="input">/company/uploadError.jsp</result>
+			<!-- 注册 -->
+			<result name="register_success" type="chain">Priveunit_getPriveunit
+			</result>
+			<result name="register_failure">/company/company_register.jsp</result>
+			<!-- 登录操作 -->
+			<result name="login_success" type="chain">Company_getGrade</result>
+			<result name="getgrade_success" type="chain">Priveunit_getPriveunit
+			</result>
+			<result name="getpriveunit_success" type="chain">ServiceType_getServiceType
+			</result>
+			<result name="getservicetpye_success" type="chain">FacilitatorType_getType
+			</result>
+			<result name="gettpye_success" type="chain">Order_isOrderOk
+			</result>
+			<result name="isorderok_success" type="chain">Message_getComUnreadMessagecount
+			</result>
+			<result name="getunreadmessagecount_success" type="chain">FacilitatorType_getTypeName
+			</result>
+			<result name="gettypename_success">/company/company_login_success.jsp
+			</result>
+			<result name="login_failure">/web/login.jsp</result>
+			<!-- 信息补完 -->
+			<result name="email_success" type="chain">Company_sendEmailToBind
+			</result>
+			<result name="email_failure">/company/company_email.jsp</result>
+
+			<result name="sendemailtobind_success">/company/company_bindEmail.jsp</result>
+			<result name="sendemailtobind_failure">/company/company_email.jsp</result>
+
+			<result name="bindemail_success">/company/company_bindEmail_success.jsp</result>
+			<result name="bindemail_failure">/company/company_bindEmail.jsp</result>
+
+
+			<result name="summary_success">/company/company_login_success.jsp</result>
+			<result name="summary_failure">/company/company_summary.jsp</result>
+			<result name="settype_success" type="chain">Company_refresh</result>
+			<result name="settype_failure">/company/company_setType.jsp</result>
+			<!-- 添加服务 -->
+			<result name="addservice_success" type="chain">Service_selectComAllService
+			</result>
+			<result name="addservice_failure">/company/company_addService.jsp</result>
+			<!-- 查询所有服务 -->
+			<result name="selectcomallservice_success">/company/company_serviceList.jsp</result>
+			<result name="selectcomallservice_failure">/company/company_login_success.jsp</result>
+			<!-- 管理服务 -->
+			<result name="getservice_success">/company/company_updateService.jsp</result>
+			<result name="getservice_failure">/company/company_serviceList.jsp</result>
+			<result name="updown_success" type="chain">Service_selectComAllService
+			</result>
+			<result name="updown_failure">/company/company_serviceList.jsp</result>
+			<result name="update_success" type="chain">Service_selectComAllService
+			</result>
+			<result name="update_failure">/company/company_serviceList.jsp
+			</result>
+			<result name="delete_success" type="chain">Service_selectComAllService
+			</result>
+			<result name="delete_failure" type="chain">Service_select</result>
+			<!-- 刷新及退出 -->
+			<result name="refresh_success" type="chain">Message_getComUnreadMessagecount
+			</result>
+			<result name="refresh_failure">/company/company_login_success.jsp</result>
+			<result name="logout_success" type="redirect">/web/login.jsp</result>
+			<!-- 查询所有订单 -->
+			<result name="selectcomallorder_success">/company/company_orderList.jsp</result>
+			<result name="selectcomallorder_failure">/company/company_login_success.jsp</result>
+			<!-- 查询所有评价 -->
+			<result name="selectcomallcomment_success">/company/company_commentList.jsp</result>
+			<result name="selectcomallcomment_failure">/company/company_login_success.jsp</result>
+			<!-- 获取全部信息 -->
+			<result name="selectmessage_success">/company/company_mymessage.jsp</result>
+			<!-- 对信息操作 -->
+			<result name="readmessage_success" type="chain">Message_selectComAllMessage
+			</result>
+			<result name="readmessage_failure" type="chain">Message_selectComAllMessage
+			</result>
+			<result name="deletemessage_success" type="chain">Message_selectComAllMessage
+			</result>
+			<result name="deletemessage_failure" type="chain">Message_selectComAllMessage
+			</result>
+			<result name="getmessagetopeople_success">/company/company_sendMessage.jsp
+			</result>
+			<result name="sendmessagetopeople_success">/company/sendMessageSuccess.jsp</result>
+			<result name="sendmessagetopeople_failure">/company/company_sendMessage.jsp</result>
+			<result name="ordergetmessagetouser_success">/company/company_sendMessage.jsp</result>
+
+			<!-- 上传图片 -->
+			<result name="upload_success" type="chain">Company_refresh</result>
+			<result name="upload_failure">/company/uploadError.jsp</result>
+			<result name="uploadlicenseimg_success" type="chain">Company_refresh
+			</result>
+			<result name="uploadlicenseimg_failure">/company/uploadError.jsp</result>
+			<!-- 订单设置 -->
+			
+			<result name="ordercomtodo_success" type="chain">Order_selectComAllOrder
+			</result>
+			<result name="ordercomtodo_failure">/company/company_orderList.jsp
+			</result>
+			
+			<result name="ordercomstart_success" type="chain">Order_selectComAllOrder
+			</result>
+			<result name="ordercomstart_failure">/company/company_orderList.jsp
+			</result>
+			
+			<result name="ordercomok_success" type="chain">Order_selectComAllOrder
+			</result>
+			<result name="ordercomok_failure">/company/company_orderList.jsp</result>
+
+			<result name="getalladmin_success">/company/company_sendMessageToAdmin.jsp</result>
+			<result name="sendmessagetoadmin_success">/company/sendMessageSuccess.jsp</result>
+			<result name="sendmessagetoadmin_failure">/company/company_sendMessageToAdmin.jsp</result>
+
+			<result name="repwd_success">/company/company_repwdSuccess.jsp</result>
+			<result name="repwd_failure">/company/company_repwd.jsp</result>
+			
+			<result name="deleteOrder_success" type="chain">Order_selectComAllOrder</result>
+			<result name="deleteOrder_failure">/company/company_orderList.jsp</result>
+			
+		</action>
+	</package>
+
+
+</struts>    

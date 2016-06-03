@@ -1,0 +1,89 @@
+*{
+	font-family: "Microsoft YaHei","sans-serif";
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #56A4E9;
+}
+
+#admin_repwd{
+	padding: 50px 20px;
+	font-size: 18px;
+}
+
+#admin_repwd .btn{
+	width: 165px;
+	cursor: pointer;
+	margin: 10px 0px 10px 188px;
+}
+
+#txtold,#txtnew,#txtre{
+	color: #000;
+	padding: 5px 10px;
+}
+
+#txtold,#txtnew{
+	margin-left: 100px;
+}
+
+#txtre{
+	margin-left: 98px;
+}
+
+#admin_repwd .form1{
+	width: 650px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#admin_repwd .form1 p{
+	line-height: 35px;
+}
+
+#admin_repwd .form1 .errorMessage{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+#admin_repwd .form1 .errorMessage span{
+	display: inline-block;
+	width: 240px;
+	height: 20px;
+	font-size: 16px;
+	color: #C11;
+	padding: 5px 5px;
+	letter-spacing: 5px;
+	background-image: url('../images/error_16px.ico');
+	background-repeat: no-repeat;
+	background-position: 0px 8px;
+	padding-left: 20px;
+}
+
+#oldpwd,#newpwd,#newrepwd{
+	width: 240px;
+	height: 20px;
+	padding: 5px 5px;
+	position: absolute;
+	right: 0px;
+	font-size: 16px;
+	color: #C11;
+	letter-spacing: 5px;
+	background-image: url('../images/error_16px.ico');
+	background-repeat: no-repeat;
+	background-position: 0px 8px;
+	padding-left: 20px;
+	display: none;
+}
+
+#oldpwd{
+	top: 5px;
+}
+
+#newpwd{
+	top: 40px;
+}
+
+#newrepwd{
+	top: 75px;
+}

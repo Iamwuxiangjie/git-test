@@ -1,0 +1,66 @@
+*{
+	font-family: "Microsoft YaHei","sans-serif";
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #56A4E9;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	color: #317EAC;
+}
+
+#admin_addFacilitatorType{
+	padding: 20px 20px;
+	font-size: 14px;
+}
+
+#admin_addFacilitatorType h2{
+	color: #317EAC;
+}
+
+#admin_addFacilitatorType .dataTable{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	line-height: 40px;
+	margin-top: 10px;
+}
+
+#admin_addFacilitatorType .dataTable tr td{
+	text-align: center;
+}
+
+#admin_addFacilitatorType .dataTable,#admin_addFacilitatorType .dataTable th,#admin_addFacilitatorType .dataTable td{
+	border: 1px solid #DDD;
+}
+
+#admin_addFacilitatorType .dataTable tr:nth-child(2n){
+	background-color: #F9F9F9;
+}
+
+#admin_addFacilitatorType .btn{
+	width: 150px;
+	cursor: pointer;
+}
+
+#admin_addFacilitatorType .txt,#admin_addFacilitatorType .txtDes{
+	color: #000;
+}
+
+#admin_addFacilitatorType .txtDes{
+	width: 912px;
+}
+
+#admin_addFacilitatorType .form1{
+	margin-top: 10px;	
+}
+
+#admin_selectAllCompany p{
+	color: #C81522;
+}
+

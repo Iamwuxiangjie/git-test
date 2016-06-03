@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.tcs.entity.FacilitatorType" table="facilitatorType">
+        <id name="facilitatorTypeId" type="java.lang.Integer">
+            <column name="facilitatorTypeId" />
+            <generator class="native" />
+        </id>
+        <property name="facilitatorTypeName" type="java.lang.String">
+            <column name="facilitatorTypeName" not-null="true" />
+        </property>
+        <property name="facilitatorTypeExplain" type="java.lang.String">
+            <column name="facilitatorTypeExplain"/>
+        </property>
+        <set name="company" table="company" inverse="true" cascade="save-update">
+			<key>
+				<column name="company_facilitatorTypeId" />
+			</key>
+			<one-to-many class="com.tcs.entity.Company" />
+		</set>
+    </class>
+</hibernate-mapping>
